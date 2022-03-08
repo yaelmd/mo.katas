@@ -2,8 +2,7 @@
 
 Hi! Welcome to Mercadona Online Katas repository, here you will find the following Katas.
 
-- X
-- X
+- Mars Rover
 
 Each Kata folder will have similar structure.
 
