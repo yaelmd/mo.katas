@@ -22,24 +22,26 @@ Mars rover moves through
 class MarsRoverTestCase(unittest.TestCase):
 
 
-    def varios_movimientos(self):
+    def test_multiple_movements(self):
         rover = Rover(
             start_x = 1,
             start_y = 1,
             orientation = 'N',
             obstacles = [(0,1),(1,2),(0,0)]
         )
-        movements = ['r','f','l','b','l','f']
-        expected_position = (1,0)
+        movements = ['r','f','l','b','b','r','f','r','f','l','f','f','f']
+        expected_position = (0,2)
         rover.move(movements)
         self.assert_rover_position(expected_position,rover)
 
-    def test_rover_move_forward_obstacle(self):
+    #Movements with obstacles
+
+    def test_rover_move_backwards_obstacle(self):
         rover = Rover(
             start_x = 2,
             start_y = 2,
-            orientation = 'N',
-            obstacles = [(0,1),(1,2)]
+            orientation = 'W',
+            obstacles = [(0,1),(0,2)]
         )
         movements = ['b']
         expected_position = (2,2)
@@ -61,7 +63,7 @@ class MarsRoverTestCase(unittest.TestCase):
 
     #Move backwards outside the borders
 
-    def test_rover_move_backwards_border(self):
+    def test_rover_move_backwards_north_border(self):
         rover = Rover(
             start_x=0,
             start_y=0,
@@ -86,7 +88,8 @@ class MarsRoverTestCase(unittest.TestCase):
         self.assert_rover_position(expected_position, rover)
 
 
-    #Test move forward inside the borders
+    #Move forward outside the borders
+
     def test_rover_move_forward_south_border(self):
         rover = Rover(
             start_x=2,
@@ -114,7 +117,8 @@ class MarsRoverTestCase(unittest.TestCase):
 
         self.assert_rover_position(expected_position, rover)
 
-    #Move forward normal
+    #Move forward inside the borders
+
     def test_rover_move_forward_east(self):
 
         rover = Rover(
@@ -144,6 +148,7 @@ class MarsRoverTestCase(unittest.TestCase):
 
     
     #Move backwards inside the borders
+
     def test_rover_move_backwards_north(self):
         rover = Rover(
             start_x=1,
@@ -172,6 +177,7 @@ class MarsRoverTestCase(unittest.TestCase):
 
 
     #Turn right
+
     def test_rover_turn_right(self):
         rover = Rover(
             start_x=1,
@@ -190,6 +196,7 @@ class MarsRoverTestCase(unittest.TestCase):
 
 
     #Turn left
+
     def test_rover_turn_left(self):
         rover = Rover(
             start_x=1,
